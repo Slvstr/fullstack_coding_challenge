@@ -1,0 +1,33 @@
+{
+  "name": "tinder_fullstack_challenge",
+  "version": "1.0.0",
+  "description": "Tinder Full Stack Coding Challenge ===================================",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Slvstr/fullstack_coding_challenge.git"
+  },
+  "author": "Erik Hellenbrand",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Slvstr/fullstack_coding_challenge/issues"
+  },
+  "homepage": "https://github.com/Slvstr/fullstack_coding_challenge",
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-angular-filesort": "^1.1.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-csso": "^1.0.1",
+    "gulp-inject": "^3.0.0",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-sass": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "wiredep": "^3.0.0-beta"
+  }
+}

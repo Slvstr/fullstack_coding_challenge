@@ -1,0 +1,22 @@
+.card {
+  position: relative;
+  height: 500px;
+  max-width: 400px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+
+  .card-pic {
+    height: 400px;
+    width: 100%;
+  }
+
+  .card-info {
+    height: 100px;
+    width: 100%;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
