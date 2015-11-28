@@ -1,5 +1,9 @@
-<div class="card">
-  <img class="card-pic" ng-src="user.profilePic">
+<div class="card" hm-pan-move="onPanMove" hm-pan-end="onPanEnd">
+  <div class="card-pic">
+    <img class="card-pic" ng-src="user.profilePic">
+    <div class="like-stamp">LIKE</div>
+    <div class="nope-stamp">NOPE</div>
+  </div>
   <div class="card-info">
     <div class="info-left">
       {{user.firstName}}, {{user.age}}
