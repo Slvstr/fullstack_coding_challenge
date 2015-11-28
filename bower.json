@@ -8,6 +8,7 @@
     "tests"
   ],
   "dependencies": {
-    "AngularHammer": "ryanmullins-angular-hammer#~2.1.10"
+    "AngularHammer": "ryanmullins-angular-hammer#~2.1.10",
+    "angular-resource": "~1.4.8"
   }
 }

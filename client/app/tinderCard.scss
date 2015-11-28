@@ -8,6 +8,13 @@
   .card-pic {
     height: 400px;
     width: 100%;
+
+    img {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+      pointer-events: none;
+    }
   }
 
   .card-info {

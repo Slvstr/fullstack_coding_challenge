@@ -37,27 +37,44 @@ gulp.task('sass', function() {
 
 });
 
+gulp.task('templates', function() {
+  return gulp.src('./client/app/**/*.html')  
+    .pipe($.angularTemplatecache({standalone: true}))
+    .pipe(gulp.dest('./client/templates'));
+})
 
 
-gulp.task('inject', ['sass'], function() {
+
+gulp.task('inject', ['sass', 'templates'], function() {
   var injectCSS = gulp.src(['./client/css/*.css'], {read: false});
   var injectScripts = gulp.src([
     './client/app/**/*.js',
+    './client/templates/*.js',
     '!./www/app/**/*.spec.js',
     '!./www/app/**/*.mock.js'
   ])
-  .pipe($.angularFilesort());
+  .pipe($.angularFilesort())
+  .pipe(gulp.dest('./client/js'));
 
   var injectOptions = {
     addRootSlash: false,
-    ignorePath: 'www'
+    ignorePath: 'client'
+  };
+
+  var wiredepOptions = {
+    directory: 'client/lib'
   };
 
 
   return gulp.src('./client/index.html')
     .pipe($.inject(injectCSS, injectOptions))
     .pipe($.inject(injectScripts, injectOptions))
-    .pipe(wiredep(options.wiredep))
-    .pipe(gulp.dest('./www'));
+    .pipe(wiredep(wiredepOptions))
+    .pipe(gulp.dest('./client'));
 
+});
+
+
+gulp.task('build', ['sass', 'inject'], function() {
+  // Move static assets to a 'public' folder.  Concat + minify scripts.  Use angularTemplateCache.
 });

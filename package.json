@@ -4,6 +4,7 @@
   "description": "Tinder Full Stack Coding Challenge ===================================",
   "main": "server/app.js",
   "scripts": {
+    "start": "gulp inject && node server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +23,7 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-angular-filesort": "^1.1.1",
+    "gulp-angular-templatecache": "^1.8.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-csso": "^1.0.1",
     "gulp-inject": "^3.0.0",

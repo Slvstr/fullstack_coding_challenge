@@ -10,21 +10,29 @@
     <!-- endbower -->
 
     <!-- bower:js -->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/hammerjs/hammer.js"></script>
+    <script src="lib/AngularHammer/angular.hammer.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
     <!-- endbower -->
 
 
     <!-- APP FILES -->
     <!-- inject:css -->
+    <link rel="stylesheet" href="css/app.css">
     <!-- endinject -->
 
   </head>
 
-  <body ng-app="tinder-challenge">
-    <div class="wrapper">
-        
+  <body ng-app="tinderChallenge">
+    <div class="card-stack">
+        <tinder-card card-model="{firstName: 'Erik', age: 27, profilePic: 'http://www.nicenicejpg.com/400', mutualFriendsCount: 11, sharedInterestsCount: 3}" card-index="0" on-swipe-left="angular.noop" on-swipe-right="angular.noop"></tinder-card>
     </div>
 
     <!-- inject:js -->
+    <script src="js/templates.js"></script>
+    <script src="js/app.module.js"></script>
+    <script src="js/tinderCard.directive.js"></script>
     <!-- endinject -->
   </body>
 </html>
