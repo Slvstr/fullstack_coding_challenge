@@ -2,7 +2,41 @@
   box-sizing: border-box;
 }
 
-.card-stack {
-  padding: 10px;
-  overflow: hidden;
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .card-stack {
+    margin: 0 auto;
+    position: relative;
+    width: 600px;
+    height: 80%;
+    overflow-x: hidden;
+    padding: 10px;
+  }
+
+  .game-pad {
+    margin: 0 auto;
+    width: 600px;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .button {
+      height: 100px;
+      width: 100px;
+      border: 3px solid #ccc;
+      border-radius: 50px;
+
+      &#like-button {
+        background: green;
+      }
+
+      &#nope-button {
+        background: red;
+      }
+    }
+  }
 }

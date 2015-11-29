@@ -25,8 +25,16 @@
   </head>
 
   <body ng-app="tinderChallenge">
-    <div class="card-stack">
-        <tinder-card card-model="{firstName: 'Erik', age: 27, profilePic: 'http://www.nicenicejpg.com/400', mutualFriendsCount: 11, sharedInterestsCount: 3}" card-index="0" on-swipe-left="angular.noop" on-swipe-right="angular.noop"></tinder-card>
+
+    <div class="container">
+        <div class="card-stack">
+            <tinder-card card-model="{firstName: 'Erik', age: 27, profilePic: 'http://www.nicenicejpg.com/400', mutualFriendsCount: 11, sharedInterestsCount: 3}" card-index="0" on-swipe-left="angular.noop" on-swipe-right="angular.noop"></tinder-card>
+        </div>
+
+        <div class="game-pad">
+            <div class="button" id="nope-button"></div>
+            <div class="button" id="like-button"></div>
+        </div>
     </div>
 
     <!-- inject:js -->

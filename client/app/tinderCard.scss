@@ -1,19 +1,44 @@
 .card {
   position: relative;
-  height: 500px;
+  margin: 0 auto;
+  height: 90%;
   max-width: 400px;
   border-radius: 10px;
   border: 1px solid #ccc;
 
   .card-pic {
     height: 400px;
-    width: 100%;
 
     img {
       width: 100%;
       height: auto;
       overflow: hidden;
       pointer-events: none;
+    }
+
+    .like-stamp {
+      position: absolute;
+      top: 10%;
+      right: 10%;
+      padding: 5px;
+      color: green;
+      font-size: 2.5em;
+      border: 3px solid green;
+      border-radius: 10px;
+      transform: rotate(30deg);
+
+    }
+
+    .nope-stamp {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      padding: 5px;
+      color: red;
+      font-size: 2.5em;
+      border: 3px solid red;
+      border-radius: 10px;
+      transform: rotate(-30deg);
     }
   }
 
@@ -25,5 +50,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    .info-left {
+      font-size: 2em;
+    }
+
+    .info-right {
+      font-size: 2em;
+    }
   }
 }
