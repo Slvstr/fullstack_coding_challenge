@@ -4,6 +4,9 @@
   // have a stack that manages reuse of the cards and tells the controller to get 
   // more data when its running low. 
 
+  // going to need to make the gamepad a directive too so it can call the swipeLeft/right functions
+  // will also have to move most of this logic to a controller instead of the link method
+
   angular
   .module('tinderChallenge')
   .directive('tinderCard', tinderCardFactory);
@@ -17,8 +20,8 @@
       scope: {
         cardModel: '=',
         cardIndex: '@',
-        onSwipeRight: '&',
-        onSwipeLeft: '&'
+        swipeRightCallback: '&onSwipeRight',
+        swipeLeftCallback: '&onSwipeLeft'
       },
       link: function(scope, element, attrs) {
         // using unprefixed window.requestAnimationFrame because android 4.4 and above, ios, and every
@@ -32,6 +35,8 @@
 
         scope.onPanMove = onPanMove;
         scope.onPanEnd = onPanEnd;
+        scope.onSwipeRight = onSwipeRight;
+        scope.onSwipeLeft = onSwipeLeft;
 
         initializeCard();
 
@@ -85,22 +90,11 @@
         }
 
         function onPanEnd(ev) {
-          // If the card has passed the threshold, finish the animation and
-          // and call the appropriate callback
           if (ev.deltaX > SWIPE_THRESHOLD) {
-            // add a class to add a transition
-            console.log('passed like threshold');
-            element.addClass('animate-off');
-            animateOff('right')
-            scope.onSwipeRight();
-
-            // TODO (Erik Hellenbrand) : handle cleanup or reuse of the card element
+            onSwipeRight();
           }
           else if (ev.deltaX < -SWIPE_THRESHOLD) {
-            console.log('passed nope threshold');
-            element.addClass('animate-off');
-            animateOff('left');
-            scope.onSwipeLeft();
+            onSwipeLeft();
           }
           else if (ev.deltaX > 0) {
             resetCard('left');
@@ -108,6 +102,17 @@
           else {
             resetCard('right');
           }
+        }
+
+        function onSwipeRight() {
+          // TODO (Erik Hellenbrand) : handle cleanup or reuse of the card element
+          animateOff('right');
+          scope.swipeRightCallback();
+        }
+
+        function onSwipeLeft() {
+          animateOff('left');
+          scope.swipeLeftCallback();
         }
 
         function animateOff(direction) {
@@ -122,6 +127,7 @@
             transform.rotate = -MAX_ROTATION;
           }
 
+          element.addClass('animate-off');
           transformCard();
         }
 
