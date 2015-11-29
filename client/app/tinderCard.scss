@@ -1,13 +1,46 @@
+@keyframes resetCardRight {
+  80% {
+    transform: translate3d(20px, 0, 0);
+  }
+  100% {
+    transform: translate3d(0,0,0) rotate(0deg);
+  }
+}
+
+@keyframes resetCardLeft {
+  80% {
+    transform: translate3d(-20px, 0, 0);
+  }
+  100% {
+    transform: translate3d(0,0,0) rotate(0deg);
+  }
+}
+
+
 .card {
-  position: relative;
   margin: 0 auto;
-  height: 90%;
+  height: 100%;
+  width: 100%;
   max-width: 400px;
   border-radius: 10px;
   border: 1px solid #ccc;
+  overflow: hidden;
+  z-index: 1;
+
+  &.reset-card-right {
+    animation: resetCardRight .3s ease-out;
+  }
+
+  &.reset-card-left {
+    animation: resetCardLeft .3s ease-out;
+  }
+
+  &.animate-off {
+    transition: transform .3s ease-in;
+  }
 
   .card-pic {
-    height: 400px;
+    height: 70%;
 
     img {
       width: 100%;
@@ -18,34 +51,35 @@
 
     .like-stamp {
       position: absolute;
-      top: 10%;
-      right: 10%;
+      top: 5%;
+      left: 5%;
       padding: 5px;
       color: green;
       font-size: 2.5em;
-      border: 3px solid green;
+      border: 5px solid green;
       border-radius: 10px;
-      transform: rotate(30deg);
+      transform: rotate(-20deg);
 
     }
 
     .nope-stamp {
       position: absolute;
-      top: 10%;
-      left: 10%;
+      top: 5%;
+      right: 5%;
       padding: 5px;
       color: red;
       font-size: 2.5em;
-      border: 3px solid red;
+      border: 5px solid red;
       border-radius: 10px;
-      transform: rotate(-30deg);
+      transform: rotate(20deg);
     }
   }
 
   .card-info {
-    height: 100px;
+    height: 30%;
     width: 100%;
     padding: 10px;
+    background: rgba(255,255,255,1);
 
     display: flex;
     flex-direction: row;

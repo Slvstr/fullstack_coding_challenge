@@ -1,28 +1,33 @@
-* {
-  box-sizing: border-box;
-}
-
 .container {
-  position: relative;
+  margin: 0 auto;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
 
   .card-stack {
     margin: 0 auto;
-    position: relative;
-    width: 600px;
+    // position: relative;
+    width: 100%;
+    max-width: 600px;
     height: 80%;
-    overflow-x: hidden;
+    // overflow-x: hidden;
     padding: 10px;
   }
 
   .game-pad {
     margin: 0 auto;
-    width: 600px;
+    padding: 20px 10px 10px 10px;
+    width: 100%;
+    max-width: 600px;
     height: 20%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: flex-end;
 
     .button {
       height: 100px;
