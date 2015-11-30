@@ -16,16 +16,13 @@
     return {
       restrict: 'E',
       replace: true,
+      require: '^tinderStack',
       templateUrl: 'tinderCard.html',
       scope: {
         cardModel: '=',
-        cardIndex: '@',
-        swipeRightCallback: '&onSwipeRight',
-        swipeLeftCallback: '&onSwipeLeft'
+        cardIndex: '@'
       },
-      link: function(scope, element, attrs) {
-        // using unprefixed window.requestAnimationFrame because android 4.4 and above, ios, and every
-        // other major browser except Opera Mini and IE<=9
+      link: function(scope, element, attrs, stackCtrl) {
         var VIEWPORT_WIDTH = Math.max($window.document.documentElement.clientWidth, $window.innerWidth || 0);
         var SWIPE_THRESHOLD = element[0].offsetWidth * 0.7;
         var MAX_ROTATION = 60;
@@ -62,9 +59,7 @@
             }
           };
 
-          // TODO (Erik Hellenbrand) : Set z-index based on scope.cardIndex
-          console.log(scope.cardIndex);
-
+          stackCtrl.registerCard(scope);
           transformCard();
 
         }
@@ -106,12 +101,12 @@
         function onSwipeRight() {
           // TODO (Erik Hellenbrand) : handle cleanup or reuse of the card element
           animateOff('right');
-          scope.swipeRightCallback();
+          stackCtrl.onSwipeRight();
         }
 
         function onSwipeLeft() {
           animateOff('left');
-          scope.swipeLeftCallback();
+          stackCtrl.onSwipeLeft();
         }
 
         function animateOff(direction) {
@@ -187,7 +182,6 @@
         *   This performs the actual style updates and is passed to $window.requestAnimationFrame()
         **/
         function animateCard() {
-          console.log('in animate card');
           var transformString = 'translate3d(' +
             transform.translate.dx + 'px,' +
             transform.translate.dy + 'px,' +
