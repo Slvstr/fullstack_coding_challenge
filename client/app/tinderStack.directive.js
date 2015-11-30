@@ -8,7 +8,15 @@
   /** @ngInject */
   function tinderStackFactory() {
     return {
-      restrict: 'A',
+      restrict: 'E',
+      templateUrl: 'tinderStack.html',
+      replace: true,
+      scope: {
+        cardModels: '=',
+        onMatch: '&'
+      },
+      bindToController: true,
+      controllerAs: 'stack',
       controller: function stackCtrl() {
         var vm = this;
         vm.cards = [];
@@ -16,8 +24,8 @@
         vm.registerCard = registerCard;
         vm.triggerSwipeRight = triggerSwipeRight;
         vm.triggerSwipeLeft = triggerSwipeLeft;
-        vm.onSwipeRight = handleSwipe;
-        vm.onSwipeLeft = handleSwipe;
+        vm.removeCard = removeCard;
+        vm.onMatch = onMatch;
 
 
         function registerCard(card) {
@@ -32,9 +40,14 @@
           vm.cards.length && vm.cards[0].onSwipeLeft();
         }
 
-        function handleSwipe() {
+        function removeCard() {
           vm.cards.shift();
           // TODO (Erik Hellenbrand) : Do cleanup on card          
+        }
+
+        function onMatch() {
+          vm.matchedWith = vm.cards[0];
+          removeCard();
         }
 
       }      

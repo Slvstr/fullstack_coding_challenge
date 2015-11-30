@@ -1,0 +1,25 @@
+<section>
+    <div class="card-stack">
+        <tinder-card ng-repeat="card in stack.cardModels" card-model="card" card-index="{{$index}}">
+        </tinder-card>
+    </div>
+
+    <div class="game-pad">
+        <div class="button" id="nope-button" ng-click="stack.triggerSwipeLeft()"><i class="fa fa-times"></i></div>
+        <div class="button" id="like-button" ng-click="stack.triggerSwipeRight()"><i class="fa fa-heart"></i></div>
+    </div>
+
+    <div class="match-screen" ng-if="!!stack.matchedWith">
+      <h1 class="match-title">It's A Match!</h1>
+      <div class="match-pic">
+        <img ng-src="{{stack.matchedWith.cardModel.profilePic}}">
+      </div>
+      <div class="match-info">
+        <p>You and {{stack.matchedWith.cardModel.firstName}} matched!</p>
+      </div>
+      <div class="controls">
+        <div class="button" ng-click="stack.matchedWith = null">Keep Playing</div>
+        <div class="button">Send Message</div>
+      </div>
+    </div>  
+</section>

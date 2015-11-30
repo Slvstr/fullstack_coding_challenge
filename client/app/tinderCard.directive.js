@@ -1,12 +1,6 @@
 (function() {
   'use strict';
 
-  // have a stack that manages reuse of the cards and tells the controller to get 
-  // more data when its running low. 
-
-  // going to need to make the gamepad a directive too so it can call the swipeLeft/right functions
-  // will also have to move most of this logic to a controller instead of the link method
-
   angular
   .module('tinderChallenge')
   .directive('tinderCard', tinderCardFactory);
@@ -101,12 +95,17 @@
         function onSwipeRight() {
           // TODO (Erik Hellenbrand) : handle cleanup or reuse of the card element
           animateOff('right');
-          stackCtrl.onSwipeRight();
+          return isMatch() ? stackCtrl.onMatch() : stackCtrl.removeCard();
         }
 
         function onSwipeLeft() {
           animateOff('left');
-          stackCtrl.onSwipeLeft();
+          return stackCtrl.removeCard();
+        }
+
+        function isMatch() {
+          // Some randomness, just for fun
+          return Math.random() > 0.5;
         }
 
         function animateOff(direction) {

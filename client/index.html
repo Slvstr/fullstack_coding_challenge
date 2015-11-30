@@ -26,21 +26,11 @@
 
   </head>
 
-  <body ng-app="tinderChallenge" ng-controller="appCtrl as stack">
+  <body ng-app="tinderChallenge" ng-controller="appCtrl as app">
 
     <section class="header-bar"><i class="fa fa-cog" id="settings-icon"></i><h1>Tinder</h1><i class="fa fa-comments-o" id="messages-icon"></i></section>
 
-    <section tinder-stack>
-        <div class="card-stack">
-            <tinder-card ng-repeat="card in stack.cards" card-model="card" card-index="{{$index}}">
-            </tinder-card>
-        </div>
-
-        <div tinder-game-pad class="game-pad">
-            <div class="button" id="nope-button" ng-click="triggerSwipeLeft()"><i class="fa fa-times"></i></div>
-            <div class="button" id="like-button" ng-click="triggerSwipeRight()"><i class="fa fa-heart"></i></div>
-        </div>        
-    </section>
+    <tinder-stack card-models="app.cards"></tinder-stack>
 
 
     <!-- inject:js -->
@@ -48,7 +38,6 @@
     <script src="js/app.module.js"></script>
     <script src="js/tinderStack.directive.js"></script>
     <script src="js/tinderCard.directive.js"></script>
-    <script src="js/gamePad.directive.js"></script>
     <script src="js/cards.service.js"></script>
     <script src="js/app.controller.js"></script>
     <!-- endinject -->
