@@ -33,10 +33,12 @@ body {
 }
 
 .game-pad {
-  margin: 0 auto;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 20px 10px 10px 10px;
   width: 100%;
-  max-width: 375px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -67,5 +69,11 @@ body {
     &#nope-button {
       color: $accent-red;
     }
+  }
+}
+
+@media(max-height: 600px) {
+  .game-pad {
+    display: none;
   }
 }

@@ -70,8 +70,6 @@
         }
 
         function onPanMove(ev) {
-          element.removeClass('reset-card');
-
           transform.translate.dx = ev.deltaX;
           transform.translate.dy = ev.deltaY;
           transform.translate.dz = transform.translate.dz || 10;
