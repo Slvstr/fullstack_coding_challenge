@@ -3,7 +3,7 @@
 
   var express = require('express');
   var path = require('path');
-  var Card = require('cards.model');
+  var Card = require('./cards.model');
 
   var app = express();
   var port = process.env.PORT || 3000;

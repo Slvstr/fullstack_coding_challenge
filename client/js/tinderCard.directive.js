@@ -63,6 +63,7 @@
           };
 
           // TODO (Erik Hellenbrand) : Set z-index based on scope.cardIndex
+          console.log(scope.cardIndex);
 
           transformCard();
 

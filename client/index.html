@@ -26,12 +26,12 @@
 
   </head>
 
-  <body ng-app="tinderChallenge">
+  <body ng-app="tinderChallenge" ng-controller="appCtrl as stack">
     
     <section class="header-bar"><i class="fa fa-cog" id="settings-icon"></i><h1>Tinder</h1><i class="fa fa-comments-o" id="messages-icon"></i></section>
 
     <section class="card-stack">
-        <tinder-card card-model="{firstName: 'Erik', age: 27, profilePic: 'http://www.nicenicejpg.com/400', mutualFriendsCount: 11, sharedInterestsCount: 3}" card-index="0" on-swipe-left="angular.noop" on-swipe-right="angular.noop">
+        <tinder-card ng-repeat="card in stack.cards" card-model="card" card-index="{{$index}}" on-swipe-left="angular.noop()" on-swipe-right="angular.noop()">
         </tinder-card>
     </section>
 
@@ -44,6 +44,8 @@
     <script src="js/templates.js"></script>
     <script src="js/app.module.js"></script>
     <script src="js/tinderCard.directive.js"></script>
+    <script src="js/cards.service.js"></script>
+    <script src="js/app.controller.js"></script>
     <!-- endinject -->
   </body>
 </html>
