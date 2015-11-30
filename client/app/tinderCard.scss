@@ -21,9 +21,11 @@ $accent-red: #F7514B;
 
 
 .card {
-  margin: 0 auto;
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  margin-left: 5%;
   border-radius: 10px;
   border: 1px solid #ccc;
   overflow: hidden;
@@ -44,7 +46,6 @@ $accent-red: #F7514B;
   }
 
   .card-pic {
-    height: 70%;
 
     img {
       max-width: 100%;
@@ -82,15 +83,13 @@ $accent-red: #F7514B;
   }
 
   .card-info {
-    height: 30%;
-    // width: 100%;
-    // margin: 0 auto;
     padding: 15px;
     background: rgba(255,255,255,1);
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
     .info-left {
       font-size: 1.5em;
@@ -108,5 +107,13 @@ $accent-red: #F7514B;
         color: $accent-red;
       }
     }
+  }
+}
+
+@media(min-width: 389px) {
+  .card {
+    left: 50%;
+    max-width: 350px;
+    margin-left: -175px;
   }
 }

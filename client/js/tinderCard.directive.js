@@ -45,7 +45,7 @@
           transform = {
             translate: {
               dx: 0,
-              dy: 0,
+              dy: scope.cardIndex * 3,
               dz: 0
             },
             rotate: 0
@@ -77,12 +77,12 @@
           transform.translate.dz = transform.translate.dz || 10;
           
           if (ev.deltaX > 0) {
-            transform.rotate = Math.max(-ev.deltaX / 50, -MAX_ROTATION);
+            transform.rotate = Math.max(-ev.deltaX / 40, -MAX_ROTATION);
             stamps.like.opacity = Math.min(ev.deltaX / SWIPE_THRESHOLD, 1);
             stamps.nope.opacity = 0;
           }
           else {
-            transform.rotate = Math.min(-ev.deltaX / 50, MAX_ROTATION);
+            transform.rotate = Math.min(-ev.deltaX / 40, MAX_ROTATION);
             stamps.like.opacity = 0;
             stamps.nope.opacity = Math.min(ev.deltaX / -SWIPE_THRESHOLD, 1);
           }
@@ -196,7 +196,7 @@
             transform.translate.dz + 'px' + ') ' +
             'rotate(' + transform.rotate + 'deg)';
 
-          element.css("-webkit-transform", transformString);
+          element.css({"-webkit-transform": transformString, "z-index": 100-scope.cardIndex});
           stamps.like.element.style.opacity = stamps.like.opacity;
           stamps.nope.element.style.opacity = stamps.nope.opacity;
         }
