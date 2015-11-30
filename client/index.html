@@ -7,6 +7,8 @@
 
     <!-- DEPENDENCIES -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="lib/normalize-css/normalize.css" />
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
 
     <!-- bower:js -->
@@ -25,17 +27,18 @@
   </head>
 
   <body ng-app="tinderChallenge">
+    
+    <section class="header-bar"><i class="fa fa-cog" id="settings-icon"></i><h1>Tinder</h1><i class="fa fa-comments-o" id="messages-icon"></i></section>
 
-    <div class="container">
-        <div class="card-stack">
-            <tinder-card card-model="{firstName: 'Erik', age: 27, profilePic: 'http://www.nicenicejpg.com/400', mutualFriendsCount: 11, sharedInterestsCount: 3}" card-index="0" on-swipe-left="angular.noop" on-swipe-right="angular.noop"></tinder-card>
-        </div>
+    <section class="card-stack">
+        <tinder-card card-model="{firstName: 'Erik', age: 27, profilePic: 'http://www.nicenicejpg.com/400', mutualFriendsCount: 11, sharedInterestsCount: 3}" card-index="0" on-swipe-left="angular.noop" on-swipe-right="angular.noop">
+        </tinder-card>
+    </section>
 
-        <div class="game-pad">
-            <div class="button" id="nope-button"></div>
-            <div class="button" id="like-button"></div>
-        </div>
-    </div>
+    <section class="game-pad">
+        <div class="button" id="nope-button"><i class="fa fa-times"></i></div>
+        <div class="button" id="like-button"><i class="fa fa-heart"></i></div>
+    </section>
 
     <!-- inject:js -->
     <script src="js/templates.js"></script>

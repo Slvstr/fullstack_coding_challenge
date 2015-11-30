@@ -1,47 +1,120 @@
-.container {
+$green: #62DC9A;
+$accent-red: #F7514B;
+
+body {
+  overflow: hidden;
+}
+
+.header-bar {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px;
+  background: white;
+  color: $accent-red;
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  i {
+    margin: 0 10px;
+    font-size: 1.5em;
+  }
+}
+
+
+.card-stack {
   margin: 0 auto;
   width: 100%;
-  height: 100%;
+  max-width: 351px;
+}
+
+.game-pad {
+  margin: 0 auto;
+  padding: 20px 10px 10px 10px;
+  width: 100%;
+  max-width: 375px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  overflow: hidden;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
 
-  .card-stack {
-    margin: 0 auto;
-    // position: relative;
-    width: 100%;
-    max-width: 600px;
-    height: 80%;
-    // overflow-x: hidden;
-    padding: 10px;
-  }
+  .button {
+    box-sizing: border-box;
+    margin: 0 20px;
+    height: 100px;
+    width: 100px;
+    border: 8px solid #ccc;
+    border-radius: 50px;
+    position: relative;
+    z-index: -1;
 
-  .game-pad {
-    margin: 0 auto;
-    padding: 20px 10px 10px 10px;
-    width: 100%;
-    max-width: 600px;
-    height: 20%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-end;
+    i {
+      font-size: 45px;
+      position: absolute;
+      top: 42px;
+      left: 42px;
+      transform: translate(-50%, -50%);
 
-    .button {
-      height: 100px;
-      width: 100px;
-      border: 3px solid #ccc;
-      border-radius: 50px;
+    }
 
-      &#like-button {
-        background: green;
-      }
+    &#like-button {
+      color: $green;
+    }
 
-      &#nope-button {
-        background: red;
-      }
+    &#nope-button {
+      color: $accent-red;
     }
   }
 }
+
+// .container {
+//   margin: 0 auto;
+//   width: 100%;
+//   max-width: 500px;
+//   height: 90%;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-around;
+//   align-items: center;
+
+//   .card-stack {
+//     margin: 0 auto;
+//     // position: relative;
+//     width: 100%;
+//     max-width: 600px;
+//     height: 80%;
+//     // overflow-x: hidden;
+//     padding: 10px;
+//   }
+
+//   .game-pad {
+//     margin: 0 auto;
+//     padding: 20px 10px 10px 10px;
+//     width: 100%;
+//     max-width: 600px;
+//     height: 20%;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-around;
+//     align-items: flex-end;
+
+//     .button {
+//       height: 100px;
+//       width: 100px;
+//       border: 3px solid #ccc;
+//       border-radius: 50px;
+
+//       &#like-button {
+//         background: green;
+//       }
+
+//       &#nope-button {
+//         background: red;
+//       }
+//     }
+//   }
+// }

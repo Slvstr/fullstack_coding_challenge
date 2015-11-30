@@ -27,7 +27,7 @@
         // using unprefixed window.requestAnimationFrame because android 4.4 and above, ios, and every
         // other major browser except Opera Mini and IE<=9
         var VIEWPORT_WIDTH = Math.max($window.document.documentElement.clientWidth, $window.innerWidth || 0);
-        var SWIPE_THRESHOLD = element[0].offsetWidth * 0.5;
+        var SWIPE_THRESHOLD = element[0].offsetWidth * 0.7;
         var MAX_ROTATION = 60;
         var hasAnimationInProgress = false;
         var transform;
@@ -76,12 +76,12 @@
           transform.translate.dz = transform.translate.dz || 10;
           
           if (ev.deltaX > 0) {
-            transform.rotate = Math.min(ev.deltaX / 50, MAX_ROTATION);
+            transform.rotate = Math.max(-ev.deltaX / 50, -MAX_ROTATION);
             stamps.like.opacity = Math.min(ev.deltaX / SWIPE_THRESHOLD, 1);
             stamps.nope.opacity = 0;
           }
           else {
-            transform.rotate = Math.max(ev.deltaX / 50, -MAX_ROTATION);
+            transform.rotate = Math.min(-ev.deltaX / 50, MAX_ROTATION);
             stamps.like.opacity = 0;
             stamps.nope.opacity = Math.min(ev.deltaX / -SWIPE_THRESHOLD, 1);
           }

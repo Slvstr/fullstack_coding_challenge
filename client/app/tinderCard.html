@@ -9,8 +9,12 @@
       {{cardModel.firstName}}, {{cardModel.age}}
     </div>
     <div class="info-right">
-      <span class="mutual-friends">{{cardModel.mutualFriendsCount}}</span>
-      <span class="shared-interests">{{cardModel.sharedInterestsCount}}</span>
+      <span ng-class="{'info-highlight': cardModel.mutualFriendsCount > 0}">
+        <i class="fa fa-users"></i><span>{{cardModel.mutualFriendsCount}}</span>        
+      </span>
+      <span ng-class="{'info-highlight': cardModel.sharedInterestsCount > 0}">
+        <i class="fa fa-book"></i><span>{{cardModel.sharedInterestsCount}}</span>
+      </span>
     </div>
   </div>
 </div>

@@ -1,3 +1,6 @@
+$green: #62DC9A;
+$accent-red: #F7514B;
+
 @keyframes resetCardRight {
   80% {
     transform: translate3d(20px, 0, 0);
@@ -21,10 +24,11 @@
   margin: 0 auto;
   height: 100%;
   width: 100%;
-  max-width: 400px;
   border-radius: 10px;
   border: 1px solid #ccc;
   overflow: hidden;
+  box-sizing: border-box;
+  background: white;
   z-index: 1;
 
   &.reset-card-right {
@@ -43,7 +47,7 @@
     height: 70%;
 
     img {
-      width: 100%;
+      max-width: 100%;
       height: auto;
       overflow: hidden;
       pointer-events: none;
@@ -54,11 +58,12 @@
       top: 5%;
       left: 5%;
       padding: 5px;
-      color: green;
+      color: $green;
       font-size: 2.5em;
-      border: 5px solid green;
-      border-radius: 10px;
+      border: 5px solid $green;
+      border-radius: 15px;
       transform: rotate(-20deg);
+      opacity: 0;
 
     }
 
@@ -67,18 +72,20 @@
       top: 5%;
       right: 5%;
       padding: 5px;
-      color: red;
+      color: $accent-red;
       font-size: 2.5em;
-      border: 5px solid red;
-      border-radius: 10px;
+      border: 5px solid $accent-red;
+      border-radius: 15px;
       transform: rotate(20deg);
+      opacity: 0;
     }
   }
 
   .card-info {
     height: 30%;
-    width: 100%;
-    padding: 10px;
+    // width: 100%;
+    // margin: 0 auto;
+    padding: 15px;
     background: rgba(255,255,255,1);
 
     display: flex;
@@ -86,11 +93,20 @@
     justify-content: space-between;
 
     .info-left {
-      font-size: 2em;
+      font-size: 1.5em;
     }
 
     .info-right {
-      font-size: 2em;
+      font-size: 1.5em;
+      color: #ccc;
+
+      span {
+        padding: 3px;
+      }
+
+      .info-highlight {
+        color: $accent-red;
+      }
     }
   }
 }
