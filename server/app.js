@@ -9,7 +9,7 @@
   var port = process.env.PORT || 3000;
   var rootDir = path.normalize(__dirname + '/..');
 
-  app.use(express.static(rootDir + '/client'));
+  app.use(express.static(rootDir + '/build'));
 
   app.get('/cards', function(req, res) {
     var cards = Card.findAll();

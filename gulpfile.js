@@ -12,13 +12,12 @@ gulp.task('sass', function() {
 
   var injectOptions = {
     transform: function(filePath) {
-      filePath = filePath.replace('client', '..');
       return '@import \'' + filePath + '\';';
     },
     starttag: '// injector',
     endtag: '// endinjector',
     addRootSlash: false,
-    relative: true
+    relative: false
   };
 
   /******************************************************************************
@@ -27,42 +26,43 @@ gulp.task('sass', function() {
 
   return gulp.src('client/scss/app.scss')
   .pipe($.inject(injectFiles, injectOptions))
-  .pipe(gulp.dest('./client/scss'))
+  .pipe(gulp.dest('./build/scss'))
   .pipe($.sourcemaps.init())
   .pipe($.sass({errLogToConsole: true}))
   .pipe($.autoprefixer())
   .pipe($.csso())
   .pipe($.sourcemaps.write())
-  .pipe(gulp.dest('./client/css/'));
+  .pipe(gulp.dest('./build/css/'));
 
 });
 
 gulp.task('templates', function() {
   return gulp.src('./client/app/**/*.html')  
     .pipe($.angularTemplatecache({standalone: true}))
-    .pipe(gulp.dest('./client/templates'));
+    .pipe(gulp.dest('./build/templates'));
 })
 
 
 
 gulp.task('inject', ['sass', 'templates'], function() {
-  var injectCSS = gulp.src(['./client/css/*.css'], {read: false});
+  var injectCSS = gulp.src(['./build/css/*.css'], {read: false});
   var injectScripts = gulp.src([
     './client/app/**/*.js',
-    './client/templates/*.js',
+    './build/templates/*.js',
     '!./www/app/**/*.spec.js',
     '!./www/app/**/*.mock.js'
   ])
   .pipe($.angularFilesort())
-  .pipe(gulp.dest('./client/js'));
+  .pipe(gulp.dest('./build/js'));
 
   var injectOptions = {
     addRootSlash: false,
-    ignorePath: 'client'
+    ignorePath: 'build'
   };
 
   var wiredepOptions = {
-    directory: 'client/lib'
+    directory: 'build/lib',
+    ignorePath: '../build/'
   };
 
 
@@ -70,7 +70,7 @@ gulp.task('inject', ['sass', 'templates'], function() {
     .pipe($.inject(injectCSS, injectOptions))
     .pipe($.inject(injectScripts, injectOptions))
     .pipe(wiredep(wiredepOptions))
-    .pipe(gulp.dest('./client'));
+    .pipe(gulp.dest('./build'));
 
 });
 
