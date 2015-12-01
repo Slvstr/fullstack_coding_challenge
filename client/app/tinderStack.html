@@ -10,12 +10,12 @@
     </div>
 
     <div class="match-screen" ng-if="!!stack.matchedWith">
-      <h1 class="match-title">It's A Match!</h1>
+      <h1 class="match-title">It's a Match!</h1>
+      <div class="match-info">
+        <p>You and {{stack.matchedWith.cardModel.firstName}} have liked each other.</p>
+      </div>
       <div class="match-pic">
         <img ng-src="{{stack.matchedWith.cardModel.profilePic}}">
-      </div>
-      <div class="match-info">
-        <p>You and {{stack.matchedWith.cardModel.firstName}} matched!</p>
       </div>
       <div class="controls">
         <div class="button" ng-click="stack.matchedWith = null">Keep Playing</div>

@@ -1,8 +1,12 @@
 $green: #62DC9A;
 $accent-red: #F7514B;
 
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+
 body {
   overflow: hidden;
+  font-family: 'Roboto', sans-serif;
 }
 
 .header-bar {
@@ -104,6 +108,7 @@ body {
 
   .match-title {
     color: white;
+    font-family: 'Pacifico', cursive;
     font-size: 3em;
   }
 
@@ -123,10 +128,10 @@ body {
 
   .match-info {
     width: 100%;
-    margin-top: 50px;
+    margin-bottom: 30px;
     color: white;
-    font-size: 1.5em;
     text-align: center;
+    font-size: 1.25em;
   }
 
   .controls {
