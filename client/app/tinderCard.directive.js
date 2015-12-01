@@ -166,9 +166,7 @@
         *   Requests animation frame to perform the card transformation and stamp opacity change
         **/
         function updateCard() {
-          $window.requestAnimationFrame(function() {
-            transformCard();
-          });
+          $window.requestAnimationFrame(transformCard);
         }
 
         /**

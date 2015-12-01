@@ -82,6 +82,26 @@ body {
   z-index: 1000;
   text-align: center;
 
+
+  /** Slide-in-up effect **/
+  &.ng-enter {
+    top: 100%;
+    transition: top 0.4s ease-out;
+
+    &.ng-enter-active {
+      top: 0;
+    }
+  }
+
+  &.ng-leave {
+    top: 0;
+    transition: 0.4s ease-out;
+
+    &.ng-leave-active {
+      top: 100%;
+    }
+  }
+
   .match-title {
     color: white;
     font-size: 3em;

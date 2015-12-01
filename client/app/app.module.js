@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-  .module('tinderChallenge', ['hmTouchEvents', 'ngResource', 'templates']);
+  .module('tinderChallenge', ['hmTouchEvents', 'ngResource', 'ngAnimate', 'templates']);
 
 })();
