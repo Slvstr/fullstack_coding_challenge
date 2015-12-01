@@ -4,7 +4,7 @@
   "description": "Tinder Full Stack Coding Challenge ===================================",
   "main": "server/app.js",
   "scripts": {
-    "postinstall": "gulp inject",
+    "postinstall": "bower install && gulp inject",
     "start": "node server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,9 +19,8 @@
   },
   "homepage": "https://github.com/Slvstr/fullstack_coding_challenge",
   "dependencies": {
-    "express": "^4.13.3"
-  },
-  "devDependencies": {
+    "bower": "^1.6.8",
+    "express": "^4.13.3",
     "gulp": "^3.9.0",
     "gulp-angular-filesort": "^1.1.1",
     "gulp-angular-templatecache": "^1.8.0",
@@ -32,5 +31,6 @@
     "gulp-sass": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
     "wiredep": "^3.0.0-beta"
-  }
+  },
+  "devDependencies": {}
 }
