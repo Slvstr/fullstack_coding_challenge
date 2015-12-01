@@ -32,6 +32,9 @@ $accent-red: #F7514B;
   box-sizing: border-box;
   background: white;
   z-index: 1;
+  transform: translate3d(0,0,0) rotate(0);
+  backface-visibility: hidden;
+  
 
   &.reset-card-right {
     animation: resetCardRight .3s ease-out;

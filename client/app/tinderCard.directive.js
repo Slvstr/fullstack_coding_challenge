@@ -20,7 +20,6 @@
         var VIEWPORT_WIDTH = Math.max($window.document.documentElement.clientWidth, $window.innerWidth || 0);
         var SWIPE_THRESHOLD = element[0].offsetWidth * 0.7;
         var MAX_ROTATION = 60;
-        var hasAnimationInProgress = false;
         var transform;
         var stamps;
 
@@ -54,7 +53,7 @@
           };
 
           stackCtrl.registerCard(scope);
-          transformCard();
+          updateCard();
 
         }
 
@@ -74,7 +73,7 @@
             stamps.nope.opacity = Math.min(ev.deltaX / -SWIPE_THRESHOLD, 1);
           }
 
-          transformCard();
+          updateCard();
         }
 
         function onPanEnd(ev) {
@@ -112,45 +111,31 @@
           if (direction === 'right') {
             transform.translate.dx = VIEWPORT_WIDTH + element[0].offsetWidth;
             transform.translate.dy *= 1.5;
+            transform.translate.dz = 10;
             transform.rotate = MAX_ROTATION;
           }
           else if (direction === 'left') {
             transform.translate.dx = -VIEWPORT_WIDTH - element[0].offsetWidth;
             transform.translate.dy *= 1.5;
+            transform.translate.dz = 10;
             transform.rotate = -MAX_ROTATION;
           }
 
           element.addClass('animate-off');
-          transformCard();
+          updateCard();
         }
 
-        /**
-        *   transformCard()
-        *
-        *   Throttles the animation so we don't request an animationFrame
-        *   more than 60fps
-        **/
-        function transformCard() {
-          if (!hasAnimationInProgress) {
-            $window.requestAnimationFrame(animateCard);
-            hasAnimationInProgress = true;
-            
-            $timeout(function() {
-              hasAnimationInProgress = false;
-            }, 17);
-          }
-        }
 
         /**
         *   resetCard()
         *
         *   Animates the card back to its initial position by adding a class that triggers a CSS animation
         *   Left and right animations are used to add a bounce/snap-back effect
-        *   After the CSS animation has completed, the stamps are reset using the transformCard function
+        *   After the CSS animation has completed, the translate and stamps are reset using the transformCard function
         **/
         function resetCard(direction) {
           transform.translate.dx = 0;
-          transform.translate.dy = 0;
+          transform.translate.dy = scope.cardIndex * 3;
           transform.translate.dz = 0;
           transform.rotate = 0;
 
@@ -176,11 +161,23 @@
         }
 
         /**
-        *   animateCard()
+        *   updateCard()
         *
-        *   This performs the actual style updates and is passed to $window.requestAnimationFrame()
+        *   Requests animation frame to perform the card transformation and stamp opacity change
         **/
-        function animateCard() {
+        function updateCard() {
+          $window.requestAnimationFrame(function() {
+            transformCard();
+          });
+        }
+
+        /**
+        *   transformCard()
+        *
+        *   This does the work of translating and rotating the card, as well
+        *   as updating stamps opacity, and is passed to $window.requestAnimationFrame()
+        **/
+        function transformCard() {
           var transformString = 'translate3d(' +
             transform.translate.dx + 'px,' +
             transform.translate.dy + 'px,' +
@@ -188,6 +185,15 @@
             'rotate(' + transform.rotate + 'deg)';
 
           element.css({"-webkit-transform": transformString, "z-index": 100-scope.cardIndex});
+          updateStamps();
+        }
+
+        /**
+        *   updateStamps()
+        *
+        *   This updates the stamps opacity
+        **/
+        function updateStamps() {
           stamps.like.element.style.opacity = stamps.like.opacity;
           stamps.nope.element.style.opacity = stamps.nope.opacity;
         }
