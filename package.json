@@ -4,7 +4,8 @@
   "description": "Tinder Full Stack Coding Challenge ===================================",
   "main": "server/app.js",
   "scripts": {
-    "start": "gulp inject && node server/app.js",
+    "postinstall": "gulp inject",
+    "start": "node server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
