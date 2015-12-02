@@ -21,5 +21,7 @@
         <div class="button" ng-click="stack.matchedWith = null">Keep Playing</div>
         <div class="button">Send Message</div>
       </div>
-    </div>  
+    </div>
+
+    <div class="reset-stack button" ng-click="stack.resetStack()" ng-if="!stack.cardModels.length" ng-class="{'animate': !stack.cardModels.length}"><i class="fa fa-refresh"></i></div>
 </section>

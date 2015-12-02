@@ -6,7 +6,7 @@
   .directive('tinderStack', tinderStackFactory);
 
   /** @ngInject */
-  function tinderStackFactory() {
+  function tinderStackFactory($timeout) {
     return {
       restrict: 'E',
       templateUrl: 'tinderStack.html',
@@ -19,35 +19,46 @@
       controllerAs: 'stack',
       controller: function stackCtrl() {
         var vm = this;
-        vm.cards = [];
+        var discardModels = [];
+        var cards = [];
 
         vm.registerCard = registerCard;
         vm.triggerSwipeRight = triggerSwipeRight;
         vm.triggerSwipeLeft = triggerSwipeLeft;
         vm.removeCard = removeCard;
         vm.onMatch = onMatch;
+        vm.resetStack = resetStack;
 
 
         function registerCard(card) {
-          vm.cards.push(card);
+          cards.push(card);
         }
 
         function triggerSwipeRight() {
-          vm.cards.length && vm.cards[0].onSwipeRight();
+          cards.length && cards[0].onSwipeRight();
         }
 
         function triggerSwipeLeft() {
-          vm.cards.length && vm.cards[0].onSwipeLeft();
+          cards.length && cards[0].onSwipeLeft();
         }
 
+        // Allow time for animation to complete before removing card from ng-repeat and thus the DOM
         function removeCard() {
-          vm.cards.shift();
-          // TODO (Erik Hellenbrand) : Do cleanup on card          
+          cards.shift();
+          $timeout(function() {
+            discardModels.push(vm.cardModels.shift());
+          }, 500);
         }
 
         function onMatch() {
-          vm.matchedWith = vm.cards[0];
+          vm.matchedWith = cards[0];
           removeCard();
+        }
+
+        function resetStack() {
+          while(discardModels.length) {
+            vm.cardModels.unshift(discardModels.pop());
+          }
         }
 
       }      

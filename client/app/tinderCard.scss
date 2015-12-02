@@ -48,6 +48,18 @@ $accent-red: #F7514B;
     transition: transform .3s ease-in;
   }
 
+  &.ng-enter-stagger {
+    transition-delay: 0.1s;
+  }
+  &.ng-enter {
+    left: -100%;
+    transition: all .3s linear;
+  }
+
+  &.ng-enter-active {
+    left: 0;
+  }
+
   .card-pic {
 
     img {
