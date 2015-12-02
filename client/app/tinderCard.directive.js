@@ -19,6 +19,7 @@
       link: function(scope, element, attrs, stackCtrl) {
         var VIEWPORT_WIDTH = Math.max($window.document.documentElement.clientWidth, $window.innerWidth || 0);
         var SWIPE_THRESHOLD = element[0].offsetWidth * 0.7;
+        var SWIPE_VELOCITY = 0.65;
         var MAX_ROTATION = 60;
         var transform;
         var stamps;
@@ -77,10 +78,10 @@
         }
 
         function onPanEnd(ev) {
-          if (ev.deltaX > SWIPE_THRESHOLD) {
+          if (ev.deltaX > SWIPE_THRESHOLD || ev.velocityX < -SWIPE_VELOCITY) {
             onSwipeRight();
           }
-          else if (ev.deltaX < -SWIPE_THRESHOLD) {
+          else if (ev.deltaX < -SWIPE_THRESHOLD || ev.velocityX > SWIPE_VELOCITY) {
             onSwipeLeft();
           }
           else if (ev.deltaX > 0) {
