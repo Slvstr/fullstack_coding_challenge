@@ -1,8 +1,19 @@
 Tinder Full Stack Coding Challenge
 ===================================
 
-Link to working example: https://limitless-atoll-2133.herokuapp.com/
+* Link to working example: https://limitless-atoll-2133.herokuapp.com/
+* How long it took to complete: Roughly 16 hours (the majority of which was spent tweaking CSS)
+* Future additions:
+  * Keep track of matches for later viewing (trivial)
+  * Add logic to fetch more cards when the stack is running low
+  * Improve performance by only creating a handful of card elements and reusing them
+  * Add a global chat room on the message tab
+  * Add the spring effect to the stack (raised as the top card moves off center, lowered as it is reset)
 
+**Tech Stack**
+* AngularJS
+* Angular-Hammer
+* Node.js + Express
 
 ### Recreate the Tinder card stack in html/js/css.
 
