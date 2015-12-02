@@ -15,6 +15,10 @@ Tinder Full Stack Coding Challenge
 * Angular-Hammer
 * Node.js + Express
 
+**Running Locally**
+* `npm install` (postinstall script will run `bower install` and `gulp inject`)
+* `npm start`
+
 ### Recreate the Tinder card stack in html/js/css.
 
 <img src="http://i.imgur.com/nh8oB6C.gif" />
