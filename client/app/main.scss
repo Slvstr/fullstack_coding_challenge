@@ -177,8 +177,15 @@ body {
 
 }
 
-@media(max-height: 600px) {
+@media(max-height: 500px) {
   .game-pad {
     display: none;
+  }
+}
+
+@media(max-height: 600px) {
+  .game-pad {
+    bottom : 0;
+    padding-bottom: 5px;
   }
 }
